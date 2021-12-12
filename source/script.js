@@ -67,3 +67,25 @@ const recherche=async (prenom) => {
 
 // findParticipant();
 
+
+    
+const findParticipant = async () => {
+    let ps = [];
+    let participantArray = await Participant.find();
+    for(let i=0; i<participantArray.length; i++){
+        let participant={};
+        let current = participantArray[i];
+        participant.name=`${current.firstname} ${current.lastname}`;        
+        participant.totalHours = 0;
+        participant.courses=[];
+        for(let j=0;j<current.courses.length; j++){
+            let d = current.courses[j];
+            let course = await Course.findById(d);
+            participant.courses.push({label:course.label, volume:course.volume});
+            participant.totalHours +=course.volume;
+        }
+        ps.push(participant);
+    }
+    console.log(JSON.stringify(ps,null,3));
+}
+findParticipant();
