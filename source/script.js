@@ -41,29 +41,91 @@ const recherche=async (prenom) => {
 }
 
 
-// const findParticipant= async () => {
-//     let participantArray=[];
-//     let participant={};
-//     participant.totalHours=0;
-//     await Participant.find().then((data, err) => {
-//         if(err){
-//             console.log(err.message);
-//         }else{
-//             data.map(p => {
-//                 participant.name=`${p.firstname} ${p.lastname}`;
-//                 console.log(participant.name);
-//                 p.courses.map(c => {
-//                    await  Course.findById(c).then((data, err) =>{
-//                         participant.totalHours+=data.volume;
-//                         console.log(`volume: ${data.volume}`);
-//                     });
-//                 })
-//                 // console.log(participant.totalHours);
-//                 participant.totalHours=0;
-//             })
-//         }
-//     })
-// }
 
+// createParticipant({
+// firstname:"Mouhamet Latyr",
+// lastname:"NDIAYE",
+// courses:[]
+// });
+// createParticipant({
+//     firstname:"Magamou",
+//     lastname:"GUEYE",
+//     courses:[]
+//     });
+// createParticipant({
+//     firstname:"Mouhamed",
+//     lastname:"CAMARA",
+//     courses:[]
+//     });
+// createParticipant({
+//     firstname:"Fatou",
+//     lastname:"NDIAYE",
+//     courses:[]
+//     });
+
+// createParticipant({
+//     firstname:"Moussa",
+//     lastname:"DIOP",
+//     courses:[]
+//     });
+
+// createCourse({label:"HTML",volume:30});
+// createCourse({label:"CSS",volume:40})
+// createCourse({label:"JS",volume:50});
+// createCourse({label:"MONGODB",volume:70});
+// createCourse({label:"EXPRESS",volume:50});
+// createCourse({label:"NODEJS",volume:20});
+// createCourse({label:"ANGULAR",volume:45});
+
+
+    ////////// WITH FOR LOOPS /////////
+
+// const findParticipant = async () => {
+//     let ps = [];
+//     let participantArray = await Participant.find();
+    
+//     for(let i=0; i<participantArray.length; i++){
+        
+//         let participant={};
+//         let current = participantArray[i];
+//         participant.name=`${current.firstname} ${current.lastname}`;        
+//         participant.totalHours = 0;
+//         participant.courses=[];
+
+//         for(let j=0;j<current.courses.length; j++){
+//             let d = current.courses[j];
+//             let course = await Course.findById(d);
+//             participant.courses.push({label:course.label, volume:course.volume});
+//             participant.totalHours += course.volume;
+//         }
+//         ps.push(participant);
+//     }
+//     console.log(JSON.stringify(ps,null,3));
+// }
 // findParticipant();
 
+
+///////// WITH MAP //////////////
+
+(async() => {
+    // await connect();
+    const part= await Participant.find();
+    const courses=await Course.find();
+    let participantArray =[]
+    part.map(p => {
+        let participant={};
+        participant.name=`${p.firstname} ${p.lastname}`;
+        participant.totalHours=0;
+        participant.courses=[];
+        courses.map(async c => {
+            p.courses.map(async x  =>{
+                if( x.equals(c._id)){
+                    participant.courses.push({label:c.label, volume:c.volume});
+                    participant.totalHours += c.volume;
+                }
+            })
+        })
+        participantArray.push(participant);
+    })
+    console.log(JSON.stringify(participantArray,null,3));
+})();
