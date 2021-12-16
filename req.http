@@ -45,10 +45,10 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:8080/courses/61b659845d9591ece3dcd0f9
+GET http://localhost:8080/courses/
 
 ###
-DELETE http://localhost:8080/courses/61bb5583cd40b4046c49f216
+DELETE http://localhost:8080/courses/
 
 ###
 GET http://localhost:8080/courses
@@ -62,13 +62,11 @@ Accept: application/json
 Content-Type: application/json
 
 {
-    "lastname":"NDIAYE",
-    "firstname": "Fatoumata",
-    "courses" :[
-        "61b65a91a16510a70322b499",
-        "61b65a91a16510a70322b49a",
-        "61b65a91a16510a70322b49c"
-    ]
+
+    "label": "MATH",
+    "description": "Description du cours",
+    "volume": 111,
+  
 
 }
 
@@ -79,11 +77,10 @@ Accept: application/json
 Content-Type: application/json
 
 {
-    "lastname":"DIOP",
-    "firstname": "LAMINE",
-    "courses" :[
-        "61b65a91a16510a70322b49a",
-        "61b65a91a16510a70322b49c"
-    ]
 
+    "label": "MATH",
+    "description": "Description du cours",
+    "volume": 111
+  
 }
+

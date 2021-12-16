@@ -1,4 +1,4 @@
-// require("dotenv").config();
+require("dotenv").config();
 const express=require('express');
 const participantRouter=require('../routes/participant.route');
 const courseRouter=require('../routes/course.route');
@@ -6,11 +6,12 @@ const courseRouter=require('../routes/course.route');
 const mongoose = require('mongoose')
 const port=8080;
 const host='http://localhost';
+const db_url = process.env.MONGO_URL;
 
 
 (async () => {
     try{    
-        await mongoose.connect('mongodb://localhost:27017/bootcomp');
+        await mongoose.connect(db_url);
         console.log('Connected to the database!');
     }
     catch(e){
