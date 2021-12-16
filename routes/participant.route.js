@@ -1,7 +1,7 @@
 
 const express= require('express');
 const router= express.Router();
-const controller = require('../source/controller')
+const controller = require('../source/participant.controller')
 
 
 
@@ -9,6 +9,11 @@ router.get('/participants',async function (req, res) {
     const parts = await controller.findAll();
     res.json(parts)
 
+});
+router.get('/participants/courses',async function (req, res) {
+    
+    const part = await controller.findCourses();
+    res.json(part);
 });
 
 router.get('/participants/:id', async function (req, res) {
@@ -22,13 +27,16 @@ router.patch('/participants/:id',async function (req, res) {
     res.json(parts)
 });
 
-router.delete('/participants/:id',function (req, res) {
+router.delete('/participants/:id',async function  (req, res) {
     const part = await controller.deleteParticipant(req.params.id);
     res.json(part)
 });
 
-router.post('/participants',function (req, res) {
-  
+router.post('/participants',async function (req, res) {
+    const part = await controller.createParticipant(req.body);
+    res.json(part)
 });
+
+
 
 module.exports=router;

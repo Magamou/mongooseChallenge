@@ -1,7 +1,15 @@
 GET http://localhost:8080/participants/61b659845d9591ece3dcd0f9
 
 ###
+DELETE http://localhost:8080/participants/61bb5583cd40b4046c49f216
 
+###
+GET http://localhost:8080/participants
+
+###
+GET http://localhost:8080/participants/courses
+
+###
 PATCH http://localhost:8080/participants/61b659845d9591ece3dcd0f9
 Accept: application/json
 Content-Type: application/json
@@ -11,6 +19,69 @@ Content-Type: application/json
     "firstname": "Fatoumata",
     "courses" :[
         "61b65a91a16510a70322b499",
+        "61b65a91a16510a70322b49a",
+        "61b65a91a16510a70322b49c"
+    ]
+
+}
+
+###
+
+POST http://localhost:8080/participants
+Accept: application/json
+Content-Type: application/json
+
+{
+    "lastname":"DIOP",
+    "firstname": "LAMINE",
+    "courses" :[
+        "61b65a91a16510a70322b49a",
+        "61b65a91a16510a70322b49c"
+    ]
+
+}
+
+
+
+###
+
+GET http://localhost:8080/courses/61b659845d9591ece3dcd0f9
+
+###
+DELETE http://localhost:8080/courses/61bb5583cd40b4046c49f216
+
+###
+GET http://localhost:8080/courses
+
+###
+GET http://localhost:8080/courses/courses
+
+###
+PATCH http://localhost:8080/courses/61b659845d9591ece3dcd0f9
+Accept: application/json
+Content-Type: application/json
+
+{
+    "lastname":"NDIAYE",
+    "firstname": "Fatoumata",
+    "courses" :[
+        "61b65a91a16510a70322b499",
+        "61b65a91a16510a70322b49a",
+        "61b65a91a16510a70322b49c"
+    ]
+
+}
+
+###
+
+POST http://localhost:8080/courses
+Accept: application/json
+Content-Type: application/json
+
+{
+    "lastname":"DIOP",
+    "firstname": "LAMINE",
+    "courses" :[
         "61b65a91a16510a70322b49a",
         "61b65a91a16510a70322b49c"
     ]

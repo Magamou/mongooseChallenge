@@ -1,24 +1,31 @@
 // require("dotenv").config();
 const express=require('express');
-const controller = require('./controller');
 const participantRouter=require('../routes/participant.route');
+const courseRouter=require('../routes/course.route');
 
+const mongoose = require('mongoose')
 const port=8080;
 const host='http://localhost';
 
-controller.connect();
+
+(async () => {
+    try{    
+        await mongoose.connect('mongodb://localhost:27017/bootcomp');
+        console.log('Connected to the database!');
+    }
+    catch(e){
+        console.log(e.message);
+    }
+})()
+
 
 const app = express();
-
-
 
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json());
 
-
 app.use('/',participantRouter);
-
-
+app.use('/',courseRouter);
 
 app.listen(port, function () {
     console.log(`Server listening  on ${host}:${port}`)

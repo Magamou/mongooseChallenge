@@ -1,29 +1,20 @@
 const mongoose = require('mongoose');
 
-const Course = require('../Model/cours.model');
+const Course = require('../Model/course.model');
 const Participant=require('../Model/participant.model')
 
-exports.connect = async() =>{
-    try{    
-        await mongoose.connect('mongodb://localhost:27017/bootcomp');
-        console.log('Connected to the database!');
-    }
-    catch(e){
-        console.log(e.message);
-    }
-}
 
 // connect();
 
-exports.createCourse = async(course)=>{
-    console.log(typeof course, course);
-    try{
-        await Course.create(course);
-    }
-    catch(e){
-        console.error(e.message);
-    }
-}
+// exports.createCourse = async(course)=>{
+//     console.log(typeof course, course);
+//     try{
+//         await Course.create(course);
+//     }
+//     catch(e){
+//         console.error(e.message);
+//     }
+// }
 
 exports.createParticipant= async(participant) => {
     console.log(typeof participant, participant);
@@ -60,8 +51,9 @@ exports.updateParticipant=async (id, data) => {
     return resultat;
 }
 
-exports.deleteParticipant(id) = async(id) => {
-    
+exports.deleteParticipant = async(id) => {
+    const resultat=await Participant.findByIdAndRemove(id);
+    return resultat;
 }
 
 
@@ -134,7 +126,7 @@ exports.deleteParticipant(id) = async(id) => {
 
 ///////// WITH MAP //////////////
 
-exports.get = async() => {
+exports.findCourses = async() => {
     // await connect();
     const part= await Participant.find();
     const courses=await Course.find();
@@ -155,4 +147,5 @@ exports.get = async() => {
         participantArray.push(participant);
     })
     console.log(JSON.stringify(participantArray,null,3));
+    return participantArray;
 }
