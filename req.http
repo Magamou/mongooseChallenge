@@ -1,7 +1,7 @@
-GET http://localhost:8080/participants/61b659845d9591ece3dcd0f9
+GET http://localhost:8080/participants/61b658e2ec9fbb7002a2f788
 
 ###
-DELETE http://localhost:8080/participants/61bb5583cd40b4046c49f216
+DELETE http://localhost:8080/participants/61b659845d9591ece3dcd0f9
 
 ###
 GET http://localhost:8080/participants
@@ -10,19 +10,12 @@ GET http://localhost:8080/participants
 GET http://localhost:8080/participants/courses
 
 ###
-PATCH http://localhost:8080/participants/61b659845d9591ece3dcd0f9
+PATCH http://localhost:8080/participants/61b658e2ec9fbb7002a2f788
 Accept: application/json
 Content-Type: application/json
 
 {
-    "lastname":"NDIAYE",
-    "firstname": "Fatoumata",
-    "courses" :[
-        "61b65a91a16510a70322b499",
-        "61b65a91a16510a70322b49a",
-        "61b65a91a16510a70322b49c"
-    ]
-
+    "lastname":"DIOP"
 }
 
 ###
@@ -48,26 +41,25 @@ Content-Type: application/json
 GET http://localhost:8080/courses/
 
 ###
-DELETE http://localhost:8080/courses/
+DELETE http://localhost:8080/courses/61bb5ce3adc99355db2d24d0
 
 ###
-GET http://localhost:8080/courses
+GET http://localhost:8080/courses/61b65a91a16510a70322b49d
 
 ###
 GET http://localhost:8080/courses/courses
 
 ###
-PATCH http://localhost:8080/courses/61b659845d9591ece3dcd0f9
+PATCH http://localhost:8080/courses/61bb5d3eadc99355db2d24d3
 Accept: application/json
 Content-Type: application/json
 
 {
 
-    "label": "MATH",
-    "description": "Description du cours",
-    "volume": 111,
+    "label": "PHYSIQUE",
+    "description": "Description du cours de physique",
+    "volume": 200
   
-
 }
 
 ###
