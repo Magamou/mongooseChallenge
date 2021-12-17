@@ -26,9 +26,18 @@ const app = express();
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json());
 
+// ejs 
+app.set('views','./views');
+app.set('view engine','ejs');
+
+app.use(express.static('public'));
+
 app.use('/',participantRouter);
 app.use('/',courseRouter);
 
+app.get('/', (req, res)=>{
+    res.render('index');
+});
 app.listen(port, function () {
     console.log(`Server listening  on ${host}:${port}`)
 });

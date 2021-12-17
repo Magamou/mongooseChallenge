@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head.ejs') %>
+  </head>
+  <body>
+    <%- include('../partials/navbar') %>
+
+    <div class="title">
+        <h1 class="text-center mb-4">Courses</h1>
+    </div>
+    
+    <div class="container">
+      <div class="row d-flex justify-content-center">
+          <div class="col-md-6 ">
+        <table class="table">
+          <tr>
+            <th>Label</th>
+            <th>Volume</th>
+            <th>Description</th>
+
+        </tr>
+            <% courses.forEach( (course) => { %> 
+            <%- include("../partials/course_view",{course}) %> 
+            <%}); %>
+        </table>
+    </div>
+      </div>
+    </div>
+  </body>
+
+  <footer><%- include('../partials/footer.ejs') %></footer>
+  <!-- Bootstrap Scripts-->
+  <%- include('../partials/scripts') %>
+</html>

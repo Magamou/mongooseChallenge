@@ -7,7 +7,7 @@ const controller = require('../service/participant.controller')
 
 router.get('/participants',async function (req, res) {
     const parts = await controller.findAll();
-    res.render('pages/participant',{parts})
+    res.json(parts)
 
 });
 router.get('/participants/courses',async function (req, res) {

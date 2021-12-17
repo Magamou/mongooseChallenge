@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head.ejs') %>
+  </head>
+  <body>
+    <%- include('../partials/navbar') %>
+
+    <h1 class="text-center mb-4">Participants</h1>
+
+    <div class="container">
+      <div class="row d-flex justify-content-center">
+          <div class="col-md-6">
+        <table class="table">
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+          </tr>
+          <% parts.forEach( (part) => { %> <%-
+          include("../partials/part_view",{part}) %> <%}); %>
+        </table>
+    </div>
+      </div>
+    </div>
+  </body>
+
+  <footer><%- include('../partials/footer.ejs') %></footer>
+  <!-- Bootstrap Scripts-->
+  <%- include('../partials/scripts') %>
+</html>
