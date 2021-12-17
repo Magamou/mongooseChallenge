@@ -10,6 +10,11 @@ router.get('/courses',async function (req, res) {
     res.render('pages/course',{courses});
 
 });
+router.get('/createcourse',async function (req, res) {
+    res.render('pages/create-course');
+
+});
+
 
 router.get('/courses/:id', async function (req, res) {
     

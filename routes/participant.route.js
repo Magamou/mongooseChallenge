@@ -10,6 +10,11 @@ router.get('/participants',async function (req, res) {
     res.render('pages/participant',{parts})
 
 });
+
+router.get('/createparticipant',async function (req, res) {
+    res.render('pages/create-participant')
+});
+
 router.get('/participants/courses',async function (req, res) {
     
     const part = await controller.findCourses();
